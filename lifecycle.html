@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Cycle</title>
+</head>
+<body>
+    <div id="lifecycle">
+        <h1>{{ name }}</h1>
+        <ul>
+            <li v-for="state in states" :key="state.id">{{ state.nome }}</li>
+        </ul>
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#lifecycle',
+            data: {
+                name: 'Joao Paulo Vieira Ramos',
+                states: []
+            },
+            beforeCreate(){
+                console.log('beforeCreate');
+            },
+            created(){
+                fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+                    .then(response => {
+                        response.json().then(data => {
+                            this.states = data;
+                        })
+                    }).catch(err => {
+                        console.log(err);
+                    })
+            },
+            beforeMount(){
+                console.log('beforeMount');
+            },
+            mounted(){
+                console.log('Mounted');
+            },
+            beforeUpdate(){
+                console.log('beforeUpdate');
+            },
+            updated(){
+                console.log('Updated');
+            },
+            beforeDestroy(){
+                console.log('beforeDestroy');
+            },
+            destroyed(){
+                console.log('destroyed');
+            },
+            
+        })
+    </script>
+</body>
+</html>
