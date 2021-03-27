@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Event Object</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+    
+
+</head>
+
+<body>
+    <div id="events">
+        <button v-on:click="call($event)">Hcode Clique Aqui</button>
+        <hr>
+        <a href="https://www.hcode.com.br" v-on:click="call($event)">Site da Hcode</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+    <script>
+
+        let app = new Vue({
+            el:'#events',
+            data: {
+                
+            },
+            methods: {
+                call(e){
+                    e.preventDefault();
+                    console.log(e);
+                }
+            
+            
+            }
+            
+        })
+    
+    </script>
+</body>
+</html>
